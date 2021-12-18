@@ -17,11 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([HelloMiddlewere::class])->group(function () {
-    Route::get('/hello', 'HelloController@index');
-    Route::get('/hello/other', 'HelloController@other');
-});
+// Route::middleware([HelloMiddlewere::class])->group(function () {
+//     Route::get('/hello', 'HelloController@index');
+//     Route::get('/hello/other', 'HelloController@other');
+// });
 
+
+Route::get('/hello/{person}', 'HelloController@index');
 Route::namespace('Sample')->group(function() {
     Route::get('/sample', 'SampleController@index');
     Route::get('/sample/other', 'SampleController@other');
