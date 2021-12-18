@@ -6,17 +6,19 @@ use Illuminate\Http\Request;
 
 class HelloController extends Controller
 {
-    public function index($id = 2)
+    public function index(Request $request)
     {
         $data = [
-            'msg' => 'id = ' . $id,
+            'msg' => $request->hello,
         ];
         return view('hello.index', $data);
     }
 
-    public function other()
+    public function other(Request $request)
     {
-        // 名前付きルーティングを使ったリダイレクト
-        return redirect()->route('hello');
+        $data = [
+            'msg' => $request->bye,
+        ];
+        return view('hello.index', $data);
     }
 }
